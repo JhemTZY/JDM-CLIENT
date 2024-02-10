@@ -43,7 +43,7 @@ function App() {
         Swal.fire({
             icon: 'success',
             title: 'Yay...',
-            text: 'You have successfully added a new task!'
+            text: 'You have successfully added a new drugs member!'
         })
 
         localStorage.setItem("taskAdded", JSON.stringify([...tasks, newTask]));
@@ -60,7 +60,7 @@ function App() {
         Swal.fire({
             icon: 'success',
             title: 'Oops...',
-            text: 'You have successfully deleted a task!'
+            text: 'You have successfully deleted a drugs member!'
         })
 
         localStorage.setItem("taskAdded", JSON.stringify(deleteTask));
@@ -101,7 +101,7 @@ const editTask = (id) => {
         Swal.fire({
             icon: 'success',
             title: 'Yay...',
-            text: 'You have successfully edited an existing task!'
+            text: 'You have successfully edited an existing drugs member!'
         });
 
         localStorage.setItem("taskAdded", JSON.stringify(myData));
