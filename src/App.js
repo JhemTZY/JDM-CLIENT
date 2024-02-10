@@ -101,7 +101,7 @@ const editTask = (id) => {
         Swal.fire({
             icon: 'success',
             title: 'Yay...',
-            text: 'You have successfully edited an existing drugs member!'
+            text: 'You have successfully edited an existing drugs member !'
         });
 
         localStorage.setItem("taskAdded", JSON.stringify(myData));
