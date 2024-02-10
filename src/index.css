@@ -32,13 +32,15 @@ body {
   font-family: "Josefin Sans", sans-serif;
 }
 
+
+
 .container {
-  max-width: 600px;
-  margin: 30px auto;
+  max-width: 609px;
+  margin: 159px auto;
   overflow: auto;
-  min-height: 300px;
+  min-height: 250px;
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 58px;
   background-color: #ccc;
 }
 

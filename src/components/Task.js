@@ -7,9 +7,15 @@ const Task = ({ task, onDelete, onEdit }) => {
             <div className="task">
                 <div>
                     <p className="taskName">
-                        <span className="textBold">Task Name:</span> {task.text}
+                        <span className="textBold">Fullname:</span> {task.fname}
                     </p>
-                    <p className="taskDate"><span className="textBold">Date of Completion:</span> {task.day}</p>
+                    <p className="taskName">
+                        <span className="textBold">Nickname:</span> {task.nname}
+                    </p>
+                    <p className="taskName">
+                        <span className="textBold">Age:</span> {task.age}
+                    </p>
+                    <p className="taskName"><span className="textBold">Position:</span> {task.position}</p>
                 </div>
                 <div>
                     <p><FaTimes onClick={() => onDelete(task.id)} className="delIcon" /></p>

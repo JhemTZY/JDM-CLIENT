@@ -2,47 +2,72 @@ import { useState } from 'react';
 import Swal from "sweetalert2";
 
 const AddTask = ({ onSave }) => {
-    const [text, setText] = useState('');
-    const [day, setDay] = useState('');
+    const [fname, setFirstname] = useState('');
+    const [nname, setNickname] = useState('');
+    const [age, setAge] = useState('');
+    const [position, setPosition] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (!text && !day) {
+        if (!fname && !nname && !age && !position) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Fill in your task and date or close the form!'
+                text: 'Fill in your Firstname , Lastname , Age and Position!'
             })
-        } else if (!text && day) {
+        } else if (!fname && nname && age && position) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Fill in your task!'
+                text: 'Fill in your Firstname!'
             })
-        } else if (text && !day) {
+        } else if (fname && !nname && age && position) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Fill in your date!'
+                text: 'Fill in your Nickname!'
             })
+        } else if (fname && nname && !age && position) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Fill in your Age!'
+            })
+        } else if (fname && nname && age && !position) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Fill in your Position!'
+            })
+
         } else {
-            onSave({ text, day });
+            onSave({ fname, nname , age , position });
         }
 
-        setText('');
-        setDay('');
+        setFirstname('');
+        setNickname('');
+        setAge('');
+        setPosition('');
+
     }
 
     return (
         <form className="add-form" onSubmit={onSubmit}>
             <div className="form-control">
-                <label>Task</label>
-                <input type="text" placeholder="add task" value={text} onChange={(e) => setText(e.target.value)} />
+                <label>Firstname</label>
+                <input type="text" placeholder="Firstname" value={fname} onChange={(e) => setFirstname(e.target.value)} />
             </div>
             <div className="form-control">
-                <label>Day & Time</label>
-                <input type="text" placeholder="add day & time" value={day} onChange={(e) => setDay(e.target.value)} />
+                <label>Nickname</label>
+                <input type="text" placeholder="Nickname" value={nname} onChange={(e) => setNickname(e.target.value)} />
+            </div>            <div className="form-control">
+                <label>Age</label>
+                <input type="text" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
+            </div>
+            <div className="form-control">
+                <label>Position</label>
+                <input type="text" placeholder="Position" value={position} onChange={(e) => setPosition(e.target.value)} />
             </div>
 
             <input type="submit" className="btn btn-block" value="Save Task" />

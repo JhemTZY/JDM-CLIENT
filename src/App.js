@@ -52,6 +52,8 @@ function App() {
     // Delete Task
     const deleteTask = (id) => {
         const deleteTask = tasks.filter((task) => task.id !== id);
+        
+       
 
         setTasks(deleteTask);
 
@@ -64,34 +66,48 @@ function App() {
         localStorage.setItem("taskAdded", JSON.stringify(deleteTask));
     }
 
-    // Edit Task
-    const editTask = (id) => {
+   // Edit Task
+const editTask = (id) => {
+    let datas = JSON.parse(localStorage.getItem('taskAdded'));
+    const taskToEdit = datas.find(x => x.id === id);
 
-        const text = prompt("Task Name");
-        const day = prompt("Day and Time");
+    const fname = prompt("Firstname", taskToEdit.fname);
+    const nname = prompt("Nickname", taskToEdit.nname);
+    const age = prompt("Age", taskToEdit.age);
+    const position = prompt("Position", taskToEdit.position);
+    
+
+    // Show confirmation dialog
+    const shouldSave = window.confirm("Do you want to save the changes?");
+
+    if (shouldSave) {
         let data = JSON.parse(localStorage.getItem('taskAdded'));
-
         const myData = data.map(x => {
             if (x.id === id) {
                 return {
                     ...x,
-                    text: text,
-                    day: day,
+                    fname: fname,
+                    nname: nname,
+                    age: age,
+                    position: position,
                     id: uuidv4()
                 }
             }
+
             return x;
-        })
+        });
+        
 
         Swal.fire({
             icon: 'success',
             title: 'Yay...',
             text: 'You have successfully edited an existing task!'
-        })
+        });
 
         localStorage.setItem("taskAdded", JSON.stringify(myData));
         window.location.reload();
-    }
+    } 
+};
 
     return (
         <>
@@ -116,6 +132,8 @@ function App() {
                         </div>
                     </div>
                     :
+
+                 
                     <div className="container">
                         {/* App Header that has open and App Name */}
                         <Header showForm={() => setShowAddTask(!showAddTask)} changeTextAndColor={showAddTask} />
@@ -124,7 +142,7 @@ function App() {
                         {showAddTask && <AddTask onSave={addTask} />}
 
                         {/* Task Counter */}
-                        <h3>Number of Tasks: {tasks.length}</h3>
+                        <h3>Number of Drug List: {tasks.length}</h3>
 
                         {/* Displaying of Tasks */}
                         {
@@ -132,7 +150,7 @@ function App() {
                                 ?
                                 (<Tasks tasks={tasks} onDelete={deleteTask} onEdit={editTask} />)
                                 :
-                                ('No Task Found!')
+                                ('No Drug List Found!')
                         }
                     </div>
             }
