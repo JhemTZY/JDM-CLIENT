@@ -63,14 +63,14 @@ const AddTask = ({ onSave }) => {
                 <input type="text" placeholder="Nickname" value={nname} onChange={(e) => setNickname(e.target.value)} />
             </div>            <div className="form-control">
                 <label>Age</label>
-                <input type="text" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
+                <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} />
             </div>
             <div className="form-control">
                 <label>Position</label>
                 <input type="text" placeholder="Position" value={position} onChange={(e) => setPosition(e.target.value)} />
             </div>
 
-            <input type="submit" className="btn btn-block" value="Save Task" />
+            <input type="submit" className="btn btn-block" value="Save" />
         </form>
     )
 }
